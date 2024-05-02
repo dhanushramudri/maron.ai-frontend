@@ -2,6 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
+import { BrowserRouter as Router } from "react-router-dom";
+
 import { ClerkProvider } from "@clerk/clerk-react";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -14,8 +16,10 @@ if (!PUBLISHABLE_KEY) {
 
 root.render(
   <React.StrictMode>
-    <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
-      <App />
-    </ClerkProvider>
+    <Router>
+      <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
+        <App />
+      </ClerkProvider>
+    </Router>
   </React.StrictMode>
 );

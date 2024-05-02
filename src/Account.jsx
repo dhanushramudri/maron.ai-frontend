@@ -1,17 +1,20 @@
+// Account.js
+
 import React from "react";
 import "./App.css";
 import {
   SignedIn,
   SignedOut,
   SignInButton,
+  SignUpButton,
   UserButton,
 } from "@clerk/clerk-react";
 
 const Account = () => {
   return (
-    <div className="right">
+    <div style={{ cursor: "pointer" }}>
       <SignedOut>
-        <SignInButton />
+        <SignInButton className="login_btn" />
       </SignedOut>
       <SignedIn>
         <UserButton />
