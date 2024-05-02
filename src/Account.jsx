@@ -15,12 +15,6 @@ const Account = () => {
     <div
       style={{
         cursor: "pointer",
-        border: "3px solid #0a65fc",
-        borderRadius: "50%",
-        justifyContent: "center",
-        alignItems: "center",
-        padding: "10px",
-        backgroundColor: "#3841792a",
       }}
     >
       <SignedOut>
