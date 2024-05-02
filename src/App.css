@@ -83,7 +83,7 @@ li:hover {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 5px;
+  padding: 8px;
   border-radius: 14px;
   width: 40px;
   height: 40px;
@@ -99,7 +99,7 @@ li:hover {
 
 #hamburger div {
   width: 30px;
-  height: 3px;
+  height: 30px;
   background-color: white;
   margin: 5px;
   transition: transform 0.3s ease;
@@ -161,5 +161,60 @@ li:hover {
   #hamburger {
     display: block;
     display: flex;
+  }
+  #hamburger {
+    /* Additional styles for hamburger icon */
+    width: 30px;
+    height: 30px;
+    padding: 5px; /* Adjust padding */
+  }
+
+  #hamburger div {
+    /* Additional styles for inner div elements */
+    width: 20px; /* Adjust width */
+    height: 3px;
+    margin: 4px; /* Adjust margin */
+  }
+
+  #hamburger.open div.line2 {
+    /* Disappears completely */
+    transform: scale(0);
+  }
+
+  #hamburger.open div.line1 {
+    /* Rotates 45deg and translates slightly upwards for the top of the X */
+    transform: rotate(45deg) translate(8px, 6px); /* Adjust translate values */
+  }
+
+  #hamburger.open div.line3 {
+    /* Rotates -45deg and translates slightly downwards for the bottom of the X */
+    transform: rotate(-45deg) translate(8px, -6px); /* Adjust translate values */
+  }
+}
+@media (max-width: 575.98px) {
+  #hamburger {
+    padding: 5px; /* Decrease padding */
+    width: 30px; /* Decrease width */
+    height: 30px; /* Decrease height */
+  }
+
+  #hamburger div {
+    width: 20px; /* Decrease width of the lines */
+    height: 3px;
+    margin: 4px; /* Adjust margin accordingly */
+  }
+  #hamburger.open div.line2 {
+    /* Disappears completely */
+    transform: scale(0);
+  }
+
+  #hamburger.open div.line1 {
+    /* Rotates 45deg and translates slightly upwards for the top of the X */
+    transform: rotate(45deg) translate(6px, 8px); /* Adjust translate values */
+  }
+
+  #hamburger.open div.line3 {
+    /* Rotates -45deg and translates slightly downwards for the bottom of the X */
+    transform: rotate(-45deg) translate(6px, -8px); /* Adjust translate values */
   }
 }
