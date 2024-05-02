@@ -1,12 +1,17 @@
 // Header.js
-
-import React from "react";
+import React, { useState } from "react";
 import Logo from "./logo.svg";
 import Account from "../../Account";
 import { Link } from "react-router-dom";
 import { SignUpButton, SignedOut } from "@clerk/clerk-react";
 
 const Header = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
     <div className="header">
       <div className="logo">
@@ -35,17 +40,55 @@ const Header = () => {
           <p className="logoname">Maron</p>
         </div>
       </div>
-      <div className="menu">
-        <ul>
-          <li>Home</li>
-          <li>About</li>
-          <li>Features</li>
-          <li>Savings Calculator</li>
-          <li>Contact</li>
-        </ul>
+      <div className={`menu-wrapper ${isMenuOpen ? "open" : ""}`}>
+        <div className="menu">
+          <ul>
+            <li>Home</li>
+            <li>About</li>
+            <li>Features</li>
+            <li>Savings Calculator</li>
+            <li>Contact</li>
+          </ul>
+        </div>
+        <div className="buttons">
+          <ul>
+            <li>
+              <Account />
+            </li>
+            <SignedOut>
+              <li>
+                <SignUpButton className="signup_btn" />
+              </li>
+            </SignedOut>
+          </ul>
+        </div>
       </div>
-      <div className="buttons">
+      <div
+        id="hamburger"
+        onClick={toggleMenu}
+        className={isMenuOpen ? "open" : ""}
+      >
+        <div className="line1"></div>
+        <div className="line2"></div>
+        <div className="line3"></div>
+      </div>
+      <div className={`sidebar ${isMenuOpen ? "open" : ""}`}>
         <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/about">About</Link>
+          </li>
+          <li>
+            <Link to="/features">Features</Link>
+          </li>
+          <li>
+            <Link to="/savings">Savings Calculator</Link>
+          </li>
+          <li>
+            <Link to="/contact">Contact</Link>
+          </li>
           <li>
             <Account />
           </li>
