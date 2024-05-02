@@ -147,7 +147,7 @@ li:hover {
 }
 .sidebar li a {
   text-decoration: none;
-  color: #0a65fc;
+  color: #3841792a;
 }
 .sidebar.open {
   transform: translateX(0);

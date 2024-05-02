@@ -1,4 +1,3 @@
-// Header.js
 import React, { useState } from "react";
 import Logo from "./logo.svg";
 import Account from "../../Account";
@@ -41,7 +40,7 @@ const Header = () => {
         </div>
       </div>
       <div className={`menu-wrapper ${isMenuOpen ? "open" : ""}`}>
-        <div className="menu">
+        <div className="menu" style={{ marginRight: "150px" }}>
           <ul>
             <li>Home</li>
             <li>About</li>
@@ -50,7 +49,7 @@ const Header = () => {
             <li>Contact</li>
           </ul>
         </div>
-        <div className="buttons">
+        <div className="buttons" style={{ marginRight: "100px" }}>
           <ul>
             <li>
               <Account />
