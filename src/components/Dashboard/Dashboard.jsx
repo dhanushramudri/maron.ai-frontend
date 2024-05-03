@@ -6,7 +6,7 @@ const Dashboard = () => {
     <div>
       <Header />
       <h1>Dashboard</h1>
-      <p>Posted Jobs</p>
+      <p>Posted Jobs Recently</p>
       <button>+ Create Job</button>
     </div>
   );
