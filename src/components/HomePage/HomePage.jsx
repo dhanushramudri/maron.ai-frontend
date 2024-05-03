@@ -8,7 +8,6 @@ const HomePage = () => {
   const sendDataToBackend = async () => {
     try {
       const response = await fetch("http://localhost:5000/user", {
-        // Adjusted endpoint
         method: "POST",
         headers: {
           "Content-Type": "application/json",
