@@ -72,8 +72,8 @@ const Form = () => {
         Currency
         <select value={currency} onChange={(e) => setCurrency(e.target.value)}>
           <option value="CAD">CAD</option>
-          <option value="USD">CAD</option>
-          <option value="EUR">CAD</option>
+          <option value="USD">USD</option>
+          <option value="EUR">EUR</option>
         </select>
       </label>
       <label>
@@ -92,10 +92,10 @@ const Form = () => {
           onChange={(e) => setSalaryType(e.target.value)}
         >
           <option value="Hourly">Hourly</option>
-          <option value="Weekly">Hourly</option>
+          <option value="Weekly">Weekly</option>
 
           <option value="Monthly">Monthly</option>
-          <option value="Yearly">Hourly</option>
+          <option value="Yearly">Yearly</option>
         </select>
       </label>
       <label>
