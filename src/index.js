@@ -6,6 +6,7 @@ import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 
 import { ClerkProvider } from "@clerk/clerk-react";
 import Dashboard from "./components/Dashboard/Dashboard";
+import CreateJob from "./components/CreateJob/CreateJob";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const PUBLISHABLE_KEY = process.env.REACT_APP_CLERK_PUBLISHABLE_KEY;
@@ -23,6 +24,7 @@ root.render(
         <Routes>
           <Route path="/" element={<App />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/dashboard/create-job" element={<CreateJob />} />
         </Routes>
       </ClerkProvider>
     </Router>
