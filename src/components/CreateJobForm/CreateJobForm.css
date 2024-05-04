@@ -32,7 +32,7 @@ textarea {
   height: 100px;
 }
 
-button {
+.form1_btn {
   display: block;
   width: 100%;
   padding: 10px;
@@ -45,6 +45,6 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+.form1_btn:hover {
   background-color: #0056b3;
 }
