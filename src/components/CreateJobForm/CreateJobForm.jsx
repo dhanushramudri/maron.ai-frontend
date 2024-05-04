@@ -57,6 +57,7 @@ const Form = () => {
     <div>
       {!secondForm ? (
         <form onSubmit={handleSubmit}>
+          <h2 style={{ color: "#0056b3" }}>Create a Job</h2>
           <label>
             Job Title*
             <input
