@@ -18,7 +18,7 @@ const Form = () => {
   const [secondForm, setSecondForm] = useState(false);
   const [filteredCountries, setFilteredCountries] = useState([]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // Handle form submission, for example, sending data to the backend
     console.log("Form submitted:", {
@@ -35,7 +35,35 @@ const Form = () => {
       skills,
       location,
     });
-
+    try {
+      const response = await fetch(
+        "http://localhost:5000/dashboard/create-job",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            jobTitle,
+            minSalary,
+            maxSalary,
+            currency,
+            salaryType,
+            team,
+            workplaceType,
+            jobType,
+            positions,
+            closingDate,
+            skills,
+            location,
+          }),
+        }
+      );
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.error("Error:", error);
+    }
     setSecondForm(true);
 
     // Clear form fields
@@ -263,8 +291,6 @@ const Form = () => {
     setLocation(country);
     setFilteredCountries([]);
   };
-
-  console.log(countries);
 
   return (
     <div>
