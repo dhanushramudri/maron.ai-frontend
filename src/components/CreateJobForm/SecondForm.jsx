@@ -95,7 +95,7 @@ const SecondForm = () => {
         <input
           type="text"
           value={education}
-          placeholder="placeholder"
+          placeholder="Enter required education"
           onChange={(e) => setEducation(e.target.value)}
         />
       </label>
@@ -129,7 +129,7 @@ const SecondForm = () => {
 
       <label htmlFor="skills">
         Technical Skills:
-        <div className="skills_btn">
+        <div className="skills_input_container">
           <input
             type="text"
             value={TechnicalSkill}
@@ -155,7 +155,7 @@ const SecondForm = () => {
             })}
           </div>
         )}
-        <div className="skills_btn">
+        <div className="skills_input_container">
           <input
             type="text"
             value={SoftSkill}
@@ -181,7 +181,7 @@ const SecondForm = () => {
             })}
           </div>
         )}
-        <div className="skills_btn">
+        <div className="skills_input_container">
           <input
             type="text"
             value={languageName}
@@ -214,7 +214,7 @@ const SecondForm = () => {
           </div>
         )}
 
-        <div className="skills_btn">
+        <div className="skills_input_container">
           <input
             type="text"
             value={certification}
