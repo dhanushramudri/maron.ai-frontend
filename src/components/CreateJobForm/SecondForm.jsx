@@ -9,7 +9,6 @@ const SecondForm = () => {
   const [requiredExperience, setRequiredExperience] = useState("");
   const [TechnicalSkill, setTechnicalSkill] = useState("");
   const [TechnicalSkills, setTechnicalSkills] = useState([]);
-  console.log(education, requiredExperience);
 
   const handleTechnicalSkillChange = (e) => {
     setTechnicalSkill(e.target.value);
@@ -23,6 +22,24 @@ const SecondForm = () => {
   const handleRemoveSkill = () => {
     setTechnicalSkills(TechnicalSkills.slice(0, -1));
   };
+  const [SoftSkill, setSoftSkill] = useState("");
+  const [SoftSkills, setSoftSkills] = useState([]);
+
+  const handleSoftSkillChange = (e) => {
+    setSoftSkill(e.target.value);
+  };
+
+  const handleAddSoftSkill = () => {
+    if (SoftSkill.trim() !== "") {
+      setSoftSkills([...SoftSkills, SoftSkill]);
+      setSoftSkill("");
+    }
+  };
+
+  const handleRemoveSoftSkill = (index) => {
+    setSoftSkills(SoftSkills.filter((_, idx) => idx !== index));
+  };
+
   return (
     <form>
       <h1 htmlFor="description">Job Description</h1>
@@ -48,6 +65,8 @@ const SecondForm = () => {
           required
         />
       </label>
+      <h1>Skills</h1>
+
       {TechnicalSkills.length > 0 && (
         <div className="skills_div">
           {TechnicalSkills.map((s, idx) => {
@@ -63,7 +82,6 @@ const SecondForm = () => {
         </div>
       )}
 
-      <h1>Skills</h1>
       <label htmlFor="skills">
         Technical Skills:
         <div className="skills_btn">
@@ -74,6 +92,32 @@ const SecondForm = () => {
             onChange={handleTechnicalSkillChange}
           />
           <FaRegCircleRight onClick={handleAddTechnicalSkill} className="btn" />
+        </div>
+      </label>
+      <label htmlFor="skills">
+        Soft Skills:
+        {SoftSkills.length > 0 && (
+          <div className="skills_div">
+            {SoftSkills.map((s, idx) => {
+              return (
+                <div key={idx}>
+                  {s}{" "}
+                  <button onClick={() => handleRemoveSoftSkill(idx)}>
+                    <RxCross2 />
+                  </button>
+                </div>
+              );
+            })}
+          </div>
+        )}
+        <div className="skills_btn">
+          <input
+            type="text"
+            value={SoftSkill}
+            placeholder="Enter soft skills"
+            onChange={handleSoftSkillChange}
+          />
+          <FaRegCircleRight onClick={handleAddSoftSkill} className="btn" />
         </div>
       </label>
     </form>
