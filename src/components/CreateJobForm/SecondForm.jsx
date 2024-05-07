@@ -10,6 +10,10 @@ const SecondForm = () => {
   const [TechnicalSkill, setTechnicalSkill] = useState("");
   const [TechnicalSkills, setTechnicalSkills] = useState([]);
 
+  const [languageName, setLanguageName] = useState("");
+  const [languageProficiency, setLanguageProficiency] = useState("");
+  const [Languages, setLanguages] = useState([]);
+
   const handleTechnicalSkillChange = (e) => {
     setTechnicalSkill(e.target.value);
   };
@@ -38,6 +42,29 @@ const SecondForm = () => {
 
   const handleRemoveSoftSkill = (index) => {
     setSoftSkills(SoftSkills.filter((_, idx) => idx !== index));
+  };
+  const handleLanguageNameChange = (e) => {
+    setLanguageName(e.target.value);
+  };
+
+  const handleLanguageProficiencyChange = (e) => {
+    setLanguageProficiency(e.target.value);
+  };
+
+  const handleAddLanguage = () => {
+    if (languageName.trim() !== "" && languageProficiency.trim() !== "") {
+      const language = {
+        name: languageName,
+        proficiency: parseInt(languageProficiency, 10),
+      };
+      setLanguages([...Languages, language]);
+      setLanguageName("");
+      setLanguageProficiency("");
+    }
+  };
+
+  const handleRemoveLanguage = (index) => {
+    setLanguages(Languages.filter((_, idx) => idx !== index));
   };
 
   return (
@@ -118,6 +145,38 @@ const SecondForm = () => {
             onChange={handleSoftSkillChange}
           />
           <FaRegCircleRight onClick={handleAddSoftSkill} className="btn" />
+        </div>
+      </label>
+      <label htmlFor="languages">
+        Language Proficiency:
+        {Languages.length > 0 && (
+          <div className="skills_div">
+            {Languages.map((language, idx) => {
+              return (
+                <div key={idx}>
+                  {language.name} - {language.proficiency}%{" "}
+                  <button onClick={() => handleRemoveLanguage(idx)}>
+                    <RxCross2 />
+                  </button>
+                </div>
+              );
+            })}
+          </div>
+        )}
+        <div className="skills_btn">
+          <input
+            type="text"
+            value={languageName}
+            placeholder="Enter language"
+            onChange={handleLanguageNameChange}
+          />
+          <input
+            type="number"
+            value={languageProficiency}
+            placeholder="Enter proficiency (%)"
+            onChange={handleLanguageProficiencyChange}
+          />
+          <FaRegCircleRight onClick={handleAddLanguage} className="btn" />
         </div>
       </label>
     </form>
