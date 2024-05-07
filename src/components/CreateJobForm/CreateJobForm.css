@@ -81,3 +81,27 @@ input {
   color: white;
   border-radius: 5px;
 }
+.skills_btn {
+  display: flex;
+  align-items: center;
+
+  /* background-color: grey; */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  cursor: pointer;
+  /* box-shadow: #323d931d 0px 7px 29px 0px; */
+}
+
+.skills_btn input {
+  flex: 1;
+}
+.skills_btn .btn {
+  margin-left: -8%;
+  background-color: white;
+  color: #007bff;
+
+  width: 30px;
+  height: 30px;
+}

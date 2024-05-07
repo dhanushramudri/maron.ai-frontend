@@ -1,29 +1,33 @@
 import React, { useState } from "react";
 import "./CreateJobForm.css";
 import { RxCross2 } from "react-icons/rx";
+import { FaRegCircleRight } from "react-icons/fa6";
 
 const SecondForm = () => {
   const [education, setEducation] = useState("");
 
   const [requiredExperience, setRequiredExperience] = useState("");
-  const [skill, setSkill] = useState("");
-  const [skills, setSkills] = useState([]);
+  const [TechnicalSkill, setTechnicalSkill] = useState("");
+  const [TechnicalSkills, setTechnicalSkills] = useState([]);
   console.log(education, requiredExperience);
 
-  const handleSkillChange = (e) => {
-    setSkill(e.target.value);
+  const handleTechnicalSkillChange = (e) => {
+    setTechnicalSkill(e.target.value);
   };
-  const handleAddSkill = () => {
-    if (skill.trim() !== "") {
-      setSkills([...skills, skill]);
-      setSkill("");
+  const handleAddTechnicalSkill = () => {
+    if (TechnicalSkill.trim() !== "") {
+      setTechnicalSkills([...TechnicalSkills, TechnicalSkill]);
+      setTechnicalSkill("");
     }
+  };
+  const handleRemoveSkill = () => {
+    setTechnicalSkills(TechnicalSkills.slice(0, -1));
   };
   return (
     <form>
-      <h1 htmlFor="description">Job Description:</h1>
+      <h1 htmlFor="description">Job Description</h1>
       <textarea type="text" id="description" name="description" required />
-      <h1 htmlFor="responsibilites">Responsibilities:</h1>
+      <h1 htmlFor="responsibilites">Responsibilities</h1>
       <label htmlFor="education">
         Education:
         <input
@@ -44,27 +48,33 @@ const SecondForm = () => {
           required
         />
       </label>
-      <div className="skills_div">
-        {skills.map((s, idx) => {
-          return (
-            <div key={idx}>
-              {s}{" "}
-              <button>
-                <RxCross2 />
-              </button>
-            </div>
-          );
-        })}
-      </div>
+      {TechnicalSkills.length > 0 && (
+        <div className="skills_div">
+          {TechnicalSkills.map((s, idx) => {
+            return (
+              <div key={idx}>
+                {s}{" "}
+                <button>
+                  <RxCross2 onClick={handleRemoveSkill} />
+                </button>
+              </div>
+            );
+          })}
+        </div>
+      )}
+
+      <h1>Skills</h1>
       <label htmlFor="skills">
-        Skills:
-        <input
-          type="text"
-          value={skill}
-          placeholder="Enter required skills"
-          onChange={handleSkillChange}
-        />
-        <button onClick={handleAddSkill}>Add Skill</button>
+        Technical Skills:
+        <div className="skills_btn">
+          <input
+            type="text"
+            value={TechnicalSkill}
+            placeholder="Enter required skills"
+            onChange={handleTechnicalSkillChange}
+          />
+          <FaRegCircleRight onClick={handleAddTechnicalSkill} className="btn" />
+        </div>
       </label>
     </form>
   );
