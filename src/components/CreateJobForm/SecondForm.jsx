@@ -14,6 +14,9 @@ const SecondForm = () => {
   const [languageProficiency, setLanguageProficiency] = useState("");
   const [Languages, setLanguages] = useState([]);
 
+  const [certification, setCertification] = useState("");
+  const [certifications, setCertifications] = useState([]);
+
   const handleTechnicalSkillChange = (e) => {
     setTechnicalSkill(e.target.value);
   };
@@ -41,7 +44,7 @@ const SecondForm = () => {
   };
 
   const handleRemoveSoftSkill = (index) => {
-    setSoftSkills(SoftSkills.filter((_, idx) => idx !== index));
+    setSoftSkills(SoftSkills.slice(0, -1));
   };
   const handleLanguageNameChange = (e) => {
     setLanguageName(e.target.value);
@@ -63,10 +66,25 @@ const SecondForm = () => {
     }
   };
 
-  const handleRemoveLanguage = (index) => {
-    setLanguages(Languages.filter((_, idx) => idx !== index));
+  const handleRemoveLanguage = () => {
+    const updatedLanguages = Languages.slice(0, -1);
+    setLanguages(updatedLanguages);
   };
 
+  const handleCertificationChange = (e) => {
+    setCertification(e.target.value);
+  };
+
+  const handleAddCertification = () => {
+    if (certification.trim() !== "") {
+      setCertifications([...certifications, certification]);
+      setCertification("");
+    }
+  };
+
+  const handleRemoveCertification = (index) => {
+    setCertifications(certifications.slice(0, -1));
+  };
   return (
     <form>
       <h1 htmlFor="description">Job Description</h1>
@@ -177,6 +195,33 @@ const SecondForm = () => {
             onChange={handleLanguageProficiencyChange}
           />
           <FaRegCircleRight onClick={handleAddLanguage} className="btn" />
+        </div>
+      </label>
+      <h1>Certifications</h1>
+      <label htmlFor="certification">
+        {certifications.length > 0 && (
+          <div className="skills_div">
+            {certifications.map((cert, idx) => {
+              return (
+                <div key={idx}>
+                  {cert}{" "}
+                  <button onClick={() => handleRemoveCertification(idx)}>
+                    <RxCross2 />
+                  </button>
+                </div>
+              );
+            })}
+          </div>
+        )}
+
+        <div className="skills_btn">
+          <input
+            type="text"
+            value={certification}
+            onChange={handleCertificationChange}
+            placeholder="Enter certification"
+          />
+          <FaRegCircleRight onClick={handleAddCertification} className="btn" />
         </div>
       </label>
     </form>
