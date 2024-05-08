@@ -16,6 +16,9 @@ const SecondForm = () => {
 
   const [certification, setCertification] = useState("");
   const [certifications, setCertifications] = useState([]);
+  const [preferredQualifications, setPreferredQualifications] = useState("");
+
+  console.log(preferredQualifications);
 
   const handleTechnicalSkillChange = (e) => {
     setTechnicalSkill(e.target.value);
@@ -223,6 +226,17 @@ const SecondForm = () => {
           />
           <FaRegCircleRight onClick={handleAddCertification} className="btn" />
         </div>
+      </label>
+      <h1>Preferred Qualifications</h1>
+      <label htmlFor="preferred">
+        <input
+          type="text"
+          id="preferred"
+          name="preferred"
+          value={preferredQualifications}
+          onChange={(e) => setPreferredQualifications(e.target.value)}
+          placeholder="Enter preferred qualifications (*optional)"
+        />
       </label>
     </form>
   );
