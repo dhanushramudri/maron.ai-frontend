@@ -17,8 +17,11 @@ const SecondForm = () => {
   const [certification, setCertification] = useState("");
   const [certifications, setCertifications] = useState([]);
   const [preferredQualifications, setPreferredQualifications] = useState("");
+  const [companyOverview, setCompanyOverview] = useState("");
+  const [benefit, setBenefit] = useState("");
+  const [benefits, setBenefits] = useState([]);
 
-  console.log(preferredQualifications);
+  console.log(companyOverview);
 
   const handleTechnicalSkillChange = (e) => {
     setTechnicalSkill(e.target.value);
@@ -87,6 +90,12 @@ const SecondForm = () => {
 
   const handleRemoveCertification = (index) => {
     setCertifications(certifications.slice(0, -1));
+  };
+  const handleAddBenefits = () => {
+    if (benefit.trim() !== "") {
+      setBenefits([...benefits, benefit]);
+      setBenefit("");
+    }
   };
   return (
     <form>
@@ -237,6 +246,43 @@ const SecondForm = () => {
           onChange={(e) => setPreferredQualifications(e.target.value)}
           placeholder="Enter preferred qualifications (*optional)"
         />
+      </label>
+      <h1>Company Overview</h1>
+      <textarea
+        type="text"
+        id="companyOverview"
+        name="companyOverview"
+        value={companyOverview}
+        onChange={(e) => setCompanyOverview(e.target.value)}
+        required
+        placeholder="Optionally, you can provide an overview of the company, its culture, values, and mission"
+      />
+      <h1>Benefits</h1>
+      <label htmlFor="benefits">
+        {benefits.length > 0 && (
+          <div className="skills_div">
+            {benefits.map((cert, idx) => {
+              return (
+                <div key={idx}>
+                  {cert}{" "}
+                  <button onClick={() => handleRemoveCertification(idx)}>
+                    <RxCross2 />
+                  </button>
+                </div>
+              );
+            })}
+          </div>
+        )}
+
+        <div className="skills_input_container">
+          <input
+            type="text"
+            value={benefit}
+            onChange={(e) => setBenefit(e.target.value)}
+            placeholder="Enter benefits"
+          />
+          <FaRegCircleRight onClick={handleAddBenefits} className="btn" />
+        </div>
       </label>
     </form>
   );

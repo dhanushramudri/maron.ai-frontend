@@ -428,7 +428,7 @@ const Form = () => {
               </ul>
             </label>
             <button className="form1_btn" type="submit">
-              Create Job
+              Next
             </button>
           </form>
         </div>
