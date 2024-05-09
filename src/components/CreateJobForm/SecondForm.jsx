@@ -284,6 +284,7 @@ const SecondForm = () => {
           <FaRegCircleRight onClick={handleAddBenefits} className="btn" />
         </div>
       </label>
+      <button onClick={() => alert("Hello")}>Click me</button>
     </form>
   );
 };
