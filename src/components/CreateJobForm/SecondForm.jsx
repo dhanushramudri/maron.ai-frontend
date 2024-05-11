@@ -9,10 +9,12 @@ const SecondForm = () => {
   const [requiredExperience, setRequiredExperience] = useState("");
   const [TechnicalSkill, setTechnicalSkill] = useState("");
   const [TechnicalSkills, setTechnicalSkills] = useState([]);
+  const [softSkill, setSoftSkill] = useState("");
+  const [softSkills, setSoftSkills] = useState([]);
 
   const [languageName, setLanguageName] = useState("");
   const [languageProficiency, setLanguageProficiency] = useState("");
-  const [Languages, setLanguages] = useState([]);
+  const [languages, setLanguages] = useState([]);
 
   const [certification, setCertification] = useState("");
   const [certifications, setCertifications] = useState([]);
@@ -35,22 +37,20 @@ const SecondForm = () => {
   const handleRemoveSkill = () => {
     setTechnicalSkills(TechnicalSkills.slice(0, -1));
   };
-  const [SoftSkill, setSoftSkill] = useState("");
-  const [SoftSkills, setSoftSkills] = useState([]);
 
   const handleSoftSkillChange = (e) => {
     setSoftSkill(e.target.value);
   };
 
   const handleAddSoftSkill = () => {
-    if (SoftSkill.trim() !== "") {
-      setSoftSkills([...SoftSkills, SoftSkill]);
+    if (softSkill.trim() !== "") {
+      setSoftSkills([...softSkills, softSkill]);
       setSoftSkill("");
     }
   };
 
   const handleRemoveSoftSkill = (index) => {
-    setSoftSkills(SoftSkills.slice(0, -1));
+    setSoftSkills(softSkills.slice(0, -1));
   };
   const handleLanguageNameChange = (e) => {
     setLanguageName(e.target.value);
@@ -66,14 +66,14 @@ const SecondForm = () => {
         name: languageName,
         proficiency: parseInt(languageProficiency, 10),
       };
-      setLanguages([...Languages, language]);
+      setLanguages([...languages, language]);
       setLanguageName("");
       setLanguageProficiency("");
     }
   };
 
   const handleRemoveLanguage = () => {
-    const updatedLanguages = Languages.slice(0, -1);
+    const updatedLanguages = languages.slice(0, -1);
     setLanguages(updatedLanguages);
   };
 
@@ -95,6 +95,32 @@ const SecondForm = () => {
     if (benefit.trim() !== "") {
       setBenefits([...benefits, benefit]);
       setBenefit("");
+    }
+  };
+  const submitHandler = (e) => {
+    e.preventDefault();
+
+    try {
+      fetch("http://localhost:5000/dashboard/create-job/des", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          education,
+          requiredExperience,
+          TechnicalSkills,
+          softSkills,
+          languages,
+          certifications,
+          preferredQualifications,
+          companyOverview,
+          benefits,
+        }),
+      });
+      console.log("job Data sucessfully submitted");
+    } catch (error) {
+      console.error("Failed to submit job description", error);
     }
   };
   return (
@@ -153,9 +179,9 @@ const SecondForm = () => {
       </label>
       <label htmlFor="skills">
         Soft Skills:
-        {SoftSkills.length > 0 && (
+        {softSkills.length > 0 && (
           <div className="skills_div">
-            {SoftSkills.map((s, idx) => {
+            {softSkills.map((s, idx) => {
               return (
                 <div key={idx}>
                   {s}{" "}
@@ -170,7 +196,7 @@ const SecondForm = () => {
         <div className="skills_input_container">
           <input
             type="text"
-            value={SoftSkill}
+            value={softSkill}
             placeholder="Enter soft skills"
             onChange={handleSoftSkillChange}
           />
@@ -179,9 +205,9 @@ const SecondForm = () => {
       </label>
       <label htmlFor="languages">
         Language Proficiency:
-        {Languages.length > 0 && (
+        {languages.length > 0 && (
           <div className="skills_div">
-            {Languages.map((language, idx) => {
+            {languages.map((language, idx) => {
               return (
                 <div key={idx}>
                   {language.name} - {language.proficiency}%{" "}
@@ -284,7 +310,7 @@ const SecondForm = () => {
           <FaRegCircleRight onClick={handleAddBenefits} className="btn" />
         </div>
       </label>
-      <button onClick={() => alert("Hello")}>Click me</button>
+      <button onClick={submitHandler}>Next</button>
     </form>
   );
 };
