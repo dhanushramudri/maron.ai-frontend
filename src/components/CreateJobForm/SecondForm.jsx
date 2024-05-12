@@ -21,7 +21,7 @@ const SecondForm = () => {
   ) : (
     <div>
       <form action="submit" onSubmit={handleSubmit}>
-        <h2 style={{ color: "black" }}> Job Description </h2>
+        <h2 style={{ color: "black", margin: "5% 0" }}> Job Description </h2>
         <ReactQuill theme="snow" value={editorHtml} onChange={handleChange} />
         <button type="submit" className="form1_btn">
           {" "}

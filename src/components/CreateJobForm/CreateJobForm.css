@@ -1,8 +1,8 @@
 form {
   box-sizing: border-box;
-  max-width: 800px;
+  max-width: 900px;
   margin: 1% auto;
-  color: #007bff;
+  /* color: #007bff; */
   padding: 2% 5%;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
@@ -116,9 +116,31 @@ input {
 }
 .thirdform_container {
   display: flex;
+  justify-content: center;
+  align-items: center;
   width: 80%;
-  margin: 4% 10%;
+  margin: 2% auto; /* Using 'auto' for left and right margins */
+  padding: 20px;
   flex-direction: column;
   gap: 10px;
-  background-color: pink;
+  background-color: white;
+}
+.slider_wrapper {
+  width: 200px;
+}
+h2 {
+  margin: 0;
+  padding: 0;
+}
+.slider_container input {
+  width: 100%;
+
+  padding: 10px;
+}
+.slider_container input:focus {
+  outline: 1px solid #ffc7c0;
+}
+label {
+  font-size: 20px;
+  font-weight: 600;
 }

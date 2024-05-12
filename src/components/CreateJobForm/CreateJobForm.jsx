@@ -302,7 +302,7 @@ const Form = () => {
       ) : (
         <div style={{ margin: "0 10%" }}>
           <form onSubmit={handleSubmit}>
-            <h2 style={{ color: "#0056b3" }}>Create a Job</h2>
+            <h1 style={{ color: "#0056b3" }}>Create a Job</h1>
             <label>
               Job Title*
               <input
