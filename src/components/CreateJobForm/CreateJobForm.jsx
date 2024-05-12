@@ -395,8 +395,10 @@ const Form = () => {
               />
             </label>
             <label>
-              Closing Date
+              Closing Date:
               <input
+                className="closing-date"
+                style={{ marginTop: "20px" }}
                 type="date"
                 value={closingDate}
                 onChange={(e) => setClosingDate(e.target.value)}

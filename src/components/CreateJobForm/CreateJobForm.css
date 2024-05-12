@@ -30,6 +30,7 @@ select {
   border: 1px solid #ccc;
   border-radius: 5px;
   appearance: none;
+  margin-top: 20px;
 }
 
 textarea {
@@ -143,4 +144,18 @@ h2 {
 label {
   font-size: 20px;
   font-weight: 600;
+}
+.closing-date {
+  width: 150px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  margin: 0 10px;
+}
+
+.closing-date:focus {
+  outline: none;
+  border-color: #0056b3;
+  box-shadow: 0 0 0 2px rgba(0, 86, 179, 0.2);
 }
