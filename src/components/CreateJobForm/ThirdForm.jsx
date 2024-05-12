@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import "./CreateJobForm.css";
 import { Slider } from "@mui/material";
+import PreviewPage from "./PreviewPage";
 
 const ThirdForm = () => {
   const [skills, setSkills] = useState(30);
@@ -121,6 +122,7 @@ const ThirdForm = () => {
           {" "}
           Next
         </button>
+        <PreviewPage />
       </form>
     </div>
   );
