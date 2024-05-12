@@ -114,3 +114,11 @@ input {
     margin-left: -12%;
   }
 }
+.thirdform_container {
+  display: flex;
+  width: 80%;
+  margin: 4% 10%;
+  flex-direction: column;
+  gap: 10px;
+  background-color: pink;
+}

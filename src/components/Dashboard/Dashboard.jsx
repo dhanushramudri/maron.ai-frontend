@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "../Header/Header";
 import "./Dashboard.css";
 import { FiFolderPlus } from "react-icons/fi";
@@ -7,9 +7,14 @@ import { Navigate, useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
   const navigate = useNavigate();
+  const [createJob, setCreateJob] = useState(false);
   const handleClick = () => {
-    navigate("/dashboard/create-job");
+    setCreateJob(true);
   };
+  if (createJob) {
+    return (window.location.href = "/dashboard/create-job");
+  }
+
   return (
     <div>
       <Header />

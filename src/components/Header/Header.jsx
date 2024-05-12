@@ -44,7 +44,14 @@ const Header = () => {
           <ul>
             <li>Home</li>
             <li>About</li>
-            <li>Features</li>
+            <li
+              onClick={(e) => {
+                e.preventDefault();
+                window.location.href = "dashboard/create-job";
+              }}
+            >
+              Create Job
+            </li>
             <li>Savings Calculator</li>
             <li>Contact</li>
           </ul>
